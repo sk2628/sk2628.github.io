@@ -28,14 +28,30 @@
 
     </audio>
 
-    <nav class="navbar navbar-dark bg-dark sticky-top">
-        <div class="input-group mb-3">
-            <div class="input-group-append">
-                <input type="text" id="minAmount" class="minAmount" placeholder="Min Amount" aria-label="Min Amount" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="confirmAmtButton">Confirm</button>
+    <div class="pos-f-t">
+
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="form-inline my-2 my-lg-0">Settings</span>
+        </button>
+        <a href="readme.html" class="btn btn-info" target="_blank" style="font: white;">
+            <span class="navbar-brand-icon">Game Info</span>
+        </a>
+    </nav>
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h4 class="text-white">Minimum Amount</h4>
+            <span class="text-muted">Set the starting dealer bet amount.</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <input type="text" id="minAmount" class="minAmount" placeholder="50" aria-label="Min Amount" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="confirmAmtButton">Confirm</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
 
     <div class = "title">
         <h1>Texas Hold'em</h1>
@@ -101,7 +117,6 @@
             <button id="betCallBtn" type="button" class="btn btn-primary">Bet/Call</button>
             <button id="checkBtn" type="button" class="btn btn-primary">Check</button>
             <button id="foldBtn" type="button" class="btn btn-primary">Fold</button>
-            <button id="allInBtn" type="button" class="btn btn-primary">All-In</button>
         </div>
     </div>
 </body>
