@@ -41,6 +41,7 @@ console.log("Connnected");
 //.....CCCCC...............................SSSSSS......SSSSSS.....
 //................................................................
 
+//Card class to store the individual card
 class Card {
     constructor(image, value, suit, code, valueNumeric){
         this.image = image;
@@ -51,6 +52,7 @@ class Card {
     }
 }
 
+//Player class to store individual player info
 class Player {
     constructor(playerId, currentBalance, isDealer = false, playerName, isBigBlind = false, isSmallBlind = false){
         this.playerId = playerId;
@@ -79,12 +81,14 @@ class Player {
     }
 }
 
+//Settings class
 class Settings {
     constructor (textToSpeech = false){
         this.textToSpeech = textToSpeech;
     }
 }
 
+//Game class to control the entire game flow and process
 class Game {
     constructor(player, deckCount, deckId, minimumAmount = 50){
         this.playerCount = player;
@@ -185,6 +189,7 @@ class Game {
     }
 }
 
+//Helper class is used to perform some handy stuffs
 class Helper {
     static formatAmount = (value) => {
         return "$ " + value.toLocaleString();
@@ -195,26 +200,6 @@ class Helper {
         for (var i=0; i < array.length; i++) {
             if (array[i].isDealer == true) {
                 return array[i];
-            }
-        }
-    }
-
-    //Return 1st player from the array
-    static findPlayer = (array) => {
-        for (var i=0; i < array.length; i++) {
-            if (array[i].isDealer == false) {
-                return array[i];
-                break;
-            }
-        }
-    }
-
-    //Return the player which is in turn
-    static findPlayerInTurn = (array) => {
-        for (var i=0; i < array.length; i++) {
-            if (array[i].isTurn == true) {
-                return array[i];
-                break;
             }
         }
     }
@@ -249,7 +234,7 @@ class Helper {
     static playChipSound = () => {
         $('#textToSpeech')
             .removeAttr('src')
-            .attr('src','../resources/cleaned/chip.mp3')[0].play();
+            .attr('src','resources/cleaned/chip.mp3')[0].play();
     }
 }
 
@@ -285,6 +270,21 @@ $(() => {
         populateSmallBigBlind();
     }
 
+//................................
+//.....AAAAA.....PPPPPPPPPP..III..
+//.....AAAAA.....PPPPPPPPPP..III..
+//....AAAAAAA....PPPPPPPPPPP.III..
+//....AAAAAAA....PPPP...PPPP.III..
+//....AAAAAAA....PPPP...PPPP.III..
+//...AAAAAAAAA...PPPPPPPPPPP.III..
+//...AAAA.AAAA...PPPPPPPPPPP.III..
+//...AAAAAAAAAA..PPPPPPPPPP..III..
+//..AAAAAAAAAAA..PPPPPPPPP...III..
+//..AAAAAAAAAAA..PPPP........III..
+//..AAAAAAAAAAAA.PPPP........III..
+//.AAAAA....AAAA.PPPP........III..
+//.AAAA.....AAAA.PPPP........III..
+//................................
     //Create New Deck and return the deck ID
     const createNewDeck = () => {
 
@@ -317,6 +317,24 @@ $(() => {
                 }
         );
     }
+
+//......................................................
+//......CCC.............................................
+//....CCCCCCCC......AAAAA.....RRRRRRRRRR...DDDDDDDDD....
+//...CCCCCCCCCC.....AAAAA.....RRRRRRRRRRR..DDDDDDDDDDD..
+//..CCCCCCCCCCC....AAAAAAA....RRRRRRRRRRR..DDDDDDDDDDD..
+//..CCCC...CCCCC...AAAAAAA....RRRR...RRRRR.DDDD...DDDD..
+//.CCCCC....CCCC...AAAAAAA....RRRR...RRRRR.DDDD....DDD..
+//.CCCC...........AAAAAAAAA...RRRRRRRRRRR..DDDD....DDD..
+//.CCCC...........AAAA.AAAA...RRRRRRRRRRR..DDDD....DDD..
+//.CCCC...........AAAAAAAAAA..RRRRRRRRRRR..DDDD....DDD..
+//.CCCCC....CCCC.AAAAAAAAAAA..RRRR..RRRRR..DDDD...DDDD..
+//..CCCC...CCCCC.AAAAAAAAAAA..RRRR...RRRR..DDDD...DDDD..
+//..CCCCCCCCCCC..AAAAAAAAAAAA.RRRR...RRRR..DDDDDDDDDDD..
+//...CCCCCCCCCC.AAAAA....AAAA.RRRR...RRRR..DDDDDDDDDD...
+//....CCCCCCCC..AAAA.....AAAA.RRRR...RRRRR.DDDDDDDDD....
+//.....CCCCC............................................
+//......................................................
 
     function drawAndRevealCard (round) {
         if (round === 2){ //Flop Stage
@@ -447,29 +465,6 @@ $(() => {
         currentRound = 0;
     }
 
-    //Future Feature
-    // const allIn = () => {
-    //     //Dealer turn
-    //     if (currentRound <= 4){
-    //         if (myPlayer.currentBalance > 0){
-    //             updatePlayerBet(myPlayer.currentBalance, currentRound);
-    //             populatePlayerBet(myPlayer.currentBalance);
-
-    //             setTableBalance(myPlayer.currentBalance);
-    //             populateTableBalance();
-    //         }
-    //         setAndRotateTurn(myDealer, myPlayer);
-    //         currentRound++;
-    //         setAndRotateTurn(myDealer, myPlayer);
-    //         drawAndRevealCard(currentRound);
-    //         allIn();
-    //     }
-    //     else if (currentRound === 5){
-    //         calculateWinner();
-    //         newRoundDefaultButton();
-    //     }
-    // }
-
     const betCall = (round) => {
         //PreFlop Round, move the bets to the table, and take turn
         let dealerMatchAmount = 0;
@@ -537,6 +532,23 @@ $(() => {
         }
     }
 
+//...........................................
+//.................OOOOOO....................
+//.DDDDDDDDD......OOOOOOOOO...MMMMM...MMMMM..
+//.DDDDDDDDDDD...OOOOOOOOOO...MMMMM...MMMMM..
+//.DDDDDDDDDDD..OOOOOOOOOOOO..MMMMMM..MMMMM..
+//.DDDD...DDDDD.OOOO....OOOO..MMMMMM.MMMMMM..
+//.DDDD....DDDD.OOOO....OOOOO.MMMMMM.MMMMMM..
+//.DDDD....DDDDDOOO......OOOO.MMMMMM.MMMMMM..
+//.DDDD....DDDDDOOO......OOOO.MMMMMM.MMMMMM..
+//.DDDD....DDDDDOOO......OOOO.MMMMMMMMMMMMM..
+//.DDDD...DDDDD.OOOO....OOOOO.MMM.MMMMMMMMM..
+//.DDDD...DDDD..OOOO....OOOO..MMM.MMMMM.MMM..
+//.DDDDDDDDDDD..OOOOOOOOOOOO..MMM.MMMMM.MMM..
+//.DDDDDDDDDD....OOOOOOOOOO...MMM.MMMMM.MMM..
+//.DDDDDDDDD......OOOOOOOOO...MMM.MMMMM.MMM..
+//.................OOOOOO....................
+//...........................................
 
     const populateTableBalance = () => {
         $('#tableBetLabel').empty();
@@ -548,8 +560,6 @@ $(() => {
     }
 
     const displayPreFlopCards = () => {
-        //Display dealer and player cards
-        //Hide Dealer and Community Card by default
 
         // $('#dealer1').css('background-image','url(' + myGame.dealerCards[0].image + ')');
         $('#dealer1').removeClass().css('background-image', '').addClass('dealer1').addClass('card-face-down-rotated-dealer1');
@@ -564,10 +574,6 @@ $(() => {
         $('#community3').removeClass().css('background-image', '').addClass('communityCards').addClass('community3').addClass('community-card-face-down');
         $('#community4').removeClass().css('background-image', '');
         $('#community5').removeClass().css('background-image', '');
-
-        // $('#community1').css('background-image','url(' + myGame.communityCards[0].image + ')');
-        // $('#community2').css('background-image','url(' + myGame.communityCards[1].image + ')');
-        // $('#community3').css('background-image','url(' + myGame.communityCards[2].image + ')');
     }
 
     const rotateBlind = () => {
@@ -1123,11 +1129,6 @@ $(() => {
         fold(); //Player Fold
     })
 
-    // $('#allInBtn').on('click', (ev) => {
-    //     ev.preventDefault();
-    //     allIn(); //Player Fold
-    // })
-
     $('#newRoundBtn').on('click', (ev) => {
         ev.preventDefault();
         currentRound = 0;
@@ -1150,7 +1151,6 @@ $(() => {
         }
     })
 
-    //TO-DO: DRY CODE: CONVERT INTO SINGLE FUNCTION
     //Chip Mouse Over handling
     $('#blueChipArea').on('mouseover',(ev) => {
         ev.preventDefault();
@@ -1194,6 +1194,15 @@ $(() => {
         ev.preventDefault();
         $('.redChip').toggleClass('hide');
     })
+
+    $('#textToSpeechCheckbox').on( 'change', function() {
+        if(typeof mySettings != "undefined"){
+            if(this.checked){
+                mySettings.textToSpeech = true;
+            } else {
+                mySettings.textToSpeech = false;
+            }
+        }})
 
     defaultButton(); //Disabled all button by default
 })

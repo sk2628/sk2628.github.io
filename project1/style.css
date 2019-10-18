@@ -1,7 +1,7 @@
 body{
 	/*display: relative;*/
 	font-family: 'Acme', sans-serif;
-	background-image: url("../resources/cleaned/Background.jpg");
+	background-image: url("resources/cleaned/Background.jpg");
 	background-repeat: no-repeat;
 	/*background-size: cover;*/
 	color: white;
@@ -14,7 +14,7 @@ h1{
 }
 
 .container-fluid{
-	background-image: url('../resources/cleaned/table6-transparent2.png');
+	background-image: url('resources/cleaned/table6-transparent2.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -118,7 +118,7 @@ h1{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 50px;
-	background-image: url("../resources/cleaned/face-down.png");
+	background-image: url("resources/cleaned/face-down.png");
 	-webkit-transform: rotate(90deg);
 	margin-left: 130px;
 	margin-top: 110px;
@@ -128,7 +128,7 @@ h1{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 50px;
-	background-image: url("../resources/cleaned/face-down.png");
+	background-image: url("resources/cleaned/face-down.png");
 	-webkit-transform: rotate(90deg);
 	margin-left: 130px;
 	margin-top: 20px;
@@ -197,7 +197,7 @@ h1{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 55px;
-	background-image: url("../resources/cleaned/face-down.png");
+	background-image: url("resources/cleaned/face-down.png");
 }
 
 .community1{

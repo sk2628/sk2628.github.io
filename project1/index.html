@@ -16,12 +16,6 @@
 
 <!-- <body background="Background.jpg"> -->
 <body>
-<!--     <div class="input-group mb-3">
-        <div class="input-group-append">
-            <input type="text" id="minAmount" class="minAmount" placeholder="Min Amount" aria-label="Min Amount" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="confirmAmtButton">Confirm</button>
-        </div>
-    </div> -->
     <audio id="textToSpeech" class="textToSpeech">
         <source id="textToSpeechSource"
                 type="audio/mp3">
@@ -29,28 +23,37 @@
     </audio>
 
     <div class="pos-f-t">
-
-    <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="form-inline my-2 my-lg-0">Settings</span>
-        </button>
-        <a href="readme.html" class="btn btn-info" target="_blank" style="font: white;">
-            <span class="navbar-brand-icon">Game Info</span>
-        </a>
-    </nav>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="form-inline my-2 my-lg-0">Settings</span>
+            </button>
+            <a href="readme.html" class="btn btn-info" target="_blank" style="font: white;">
+                <span class="navbar-brand-icon">Game Info</span>
+            </a>
+        </nav>
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
             <h4 class="text-white">Minimum Amount</h4>
             <span class="text-muted">Set the starting dealer bet amount.</span>
-                <div class="input-group mb-3">
-                    <div class="input-group-append">
-                        <input type="text" id="minAmount" class="minAmount" placeholder="50" aria-label="Min Amount" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="confirmAmtButton">Confirm</button>
-                    </div>
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <input type="text" id="minAmount" class="minAmount" placeholder="50" aria-label="Min Amount" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="confirmAmtButton">Confirm</button>
+                </div>
+            </div>
+
+            <h4 class="text-white">Enable Text to Speech</h4>
+            <span class="text-muted">Check to enable text to speech</span>
+            <div class="input-group mb-3">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" checked type="checkbox" id="textToSpeechCheckbox" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Enable text to speech</label>
                 </div>
             </div>
         </div>
+    </div>
+
     </div>
 
     <div class = "title">
@@ -62,10 +65,10 @@
             <div id="dealerBalance" class="badge badge-pill badge-info"></div>
             <div>
                 <span>Dealer
-                <img id="dealerTurn" class="turn hide" src="../resources/cleaned/green.png"/></span>
+                <img id="dealerTurn" class="turn hide" src="resources/cleaned/green.png"/></span>
             </div>
         </div>
-        <img id="dealerBigBlind" src="../resources/cleaned/bigblind2.png" class="bigBlind-dealer hide"/>
+        <img id="dealerBigBlind" src="resources/cleaned/bigblind2.png" class="bigBlind-dealer hide"/>
         <div id="dealer1"></div>
         <div id="dealer2"></div>
         <div id="dealerBet" class="dealerBet">
@@ -87,10 +90,10 @@
         </div>
 
         <div id="chipImageArea" class="chipImageArea">
-            <img class="chipImg blueChip hide" src="../resources/cleaned/blue-chip-25-transparent.png"/>
-            <img class="chipImg greenChip hide" src="../resources/cleaned/green-chip-50-transparent.png"/>
-            <img class="chipImg blackChip hide" src="../resources/cleaned/black-chip-100-transparent.png"/>
-            <img class="chipImg redChip hide" src="../resources/cleaned/red-chip-200-transparent.png"/>
+            <img class="chipImg blueChip hide" src="resources/cleaned/blue-chip-25-transparent.png"/>
+            <img class="chipImg greenChip hide" src="resources/cleaned/green-chip-50-transparent.png"/>
+            <img class="chipImg blackChip hide" src="resources/cleaned/black-chip-100-transparent.png"/>
+            <img class="chipImg redChip hide" src="resources/cleaned/red-chip-200-transparent.png"/>
         </div>
 
         <div id="blueChipArea" class="chipsBet blueChipArea"></div>
@@ -102,7 +105,7 @@
             <div id="playerBalance" class="badge badge-pill badge-info"></div>
             <div>
                 <span>Player
-                <img id="playerTurn" class="turn hide" src="../resources/cleaned/green.png"/></span>
+                <img id="playerTurn" class="turn hide" src="resources/cleaned/green.png"/></span>
             </div>
         </div>
         <div id="player1" class="player1"></div>
