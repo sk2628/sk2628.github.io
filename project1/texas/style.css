@@ -1,0 +1,441 @@
+body{
+	/*display: relative;*/
+	font-family: 'Acme', sans-serif;
+	background-image: url("../resources/cleaned/Background.jpg");
+	background-repeat: no-repeat;
+	/*background-size: cover;*/
+	color: white;
+}
+
+/*Remove the default padding and margin of h1 tag*/
+h1{
+	padding: 0px;
+	margin: 0px;
+}
+
+.container-fluid{
+	background-image: url('../resources/cleaned/table6-transparent2.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	display: grid;
+	grid-template-rows: 14% 26% 10% 10% 8% 41%;
+	grid-template-columns: 16% 19% 3% 3% 3% 3% 3% 3% 3% 3% 6.5% 3% 15% 8% 6%;
+	min-height: 700px;
+	max-width: 1480px;
+	left-padding: 40px;
+	right-padding: 40px;
+}
+
+.startButtonArea{
+	grid-column-start: 5;
+	grid-column-end: 11;
+	grid-row-start: 6;
+	grid-row-end: 7;
+	padding-top: 5%;
+	justify-self: center;
+}
+
+.dealer1{
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 2;
+	grid-row-end: 5;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 170px 270px;
+	-webkit-transform: rotate(90deg);
+	border-radius: 25%;
+	margin-left: 130px;
+	margin-top: 110px;
+}
+
+.dealer2{
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 3;
+	grid-row-end: 6;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 170px 270px;
+	-webkit-transform: rotate(90deg);
+	border-radius: 25%;
+	margin-left: 130px;
+	margin-top: 20px;
+}
+
+.player1{
+	grid-column-start: 14;
+	grid-column-end: 15;
+	grid-row-start: 2;
+	grid-row-end: 5;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 170px 270px;
+	-webkit-transform: rotate(90deg);
+	border-radius: 25%;
+	margin-left: 10px;
+	margin-top: 110px;
+}
+
+.player2{
+	grid-column-start: 14;
+	grid-column-end: 15;
+	grid-row-start: 3;
+	grid-row-end: 6;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 170px 270px;
+	-webkit-transform: rotate(90deg);
+	border-radius: 25%;
+	margin-left: 10px;
+	margin-top: 15px;
+}
+
+.betLabel{
+	font-size: 24px;
+}
+
+.dealerBet{
+	grid-column-start: 5;
+	grid-column-end: 10;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	margin-left: 10%
+}
+
+.playerBet{
+	grid-column-start: 13;
+	grid-column-end: 14;
+	grid-row-start: 2;
+	grid-row-end: 4;
+	margin-right: 10%;
+	align-self: center;
+	justify-self: end;
+}
+
+.card-face-down-rotated-dealer1{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 50px;
+	background-image: url("../resources/cleaned/face-down.png");
+	-webkit-transform: rotate(90deg);
+	margin-left: 130px;
+	margin-top: 110px;
+}
+
+.card-face-down-rotated-dealer2{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 50px;
+	background-image: url("../resources/cleaned/face-down.png");
+	-webkit-transform: rotate(90deg);
+	margin-left: 130px;
+	margin-top: 20px;
+}
+
+.tableBet{
+	grid-column-start: 5;
+	grid-column-end: 11;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	align-self: end;
+	text-align: center;
+	/*margin-bottom: 20px;*/
+}
+
+.chipImg{
+	width: 80px;
+}
+
+.chipImageArea{
+	grid-column-start: 13;
+	grid-column-end: 14;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	padding-left: 100px;
+}
+
+.blueChipArea{
+	grid-column-start: 6;
+	grid-column-end: 7;
+	grid-row-start: 5;
+	grid-row-end: 6;
+}
+
+.greenChipArea{
+	grid-column-start: 7;
+	grid-column-end: 8;
+	grid-row-start: 5;
+	grid-row-end: 6;
+}
+
+.blackChipArea{
+	grid-column-start: 8;
+	grid-column-end: 9;
+	grid-row-start: 5;
+	grid-row-end: 6;
+}
+
+.redChipArea{
+	grid-column-start: 9;
+	grid-column-end: 10;
+	grid-row-start: 5;
+	grid-row-end: 6;
+}
+
+.communityCards{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 200px;
+	border-radius: 25%;
+	margin-top: 20%;
+}
+
+.community-card-face-down{
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 55px;
+	background-image: url("../resources/cleaned/face-down.png");
+}
+
+.community1{
+	grid-column-start: 3;
+	grid-column-end: 5;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	margin-right: 8%;
+	margin-bottom: 20%;
+}
+
+.community2{
+	grid-column-start: 5;
+	grid-column-end: 7;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	margin-bottom: 20%;
+}
+
+.community3{
+	grid-column-start: 7;
+	grid-column-end: 9;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	margin-bottom: 20%;
+}
+
+.community4{
+	grid-column-start: 9;
+	grid-column-end: 11;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	margin-left:10%;
+	margin-bottom: 20%;
+}
+
+.community5{
+	grid-column-start: 11;
+	grid-column-end: 12;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	margin-left:5%;
+	margin-bottom: 20%;
+}
+
+.playerChips{
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 4;
+	grid-row-end: 5;
+	border-style: solid;
+	border-color: purple;
+}
+
+.chips{
+	border-style: solid;
+	border-color: purple;
+	margin: 0 auto;
+}
+
+.title{
+	text-align: center;
+	/*color: white;*/
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+.settings{
+	position: fixed;
+	min-width: 200px;
+	max-width: 200px;
+	border-style: solid;
+	border-color: purple;
+	background-color:rgba(255,0,0,0.5);
+	margin-left: 10px;
+	/*color: white;*/
+}
+
+.tableLabel{
+	font-family: 'Acme', sans-serif;
+	font-size: 12%;
+	align-self: end;
+	/*color: #FFF;*/
+}
+
+.dealarLabel{
+	font-family: 'Acme', sans-serif;
+	font-size: 220%;
+	align-self: end;
+	text-align: right;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+.playerLabel{
+	font-family: 'Acme', sans-serif;
+	font-size: 220%;
+	align-self: end;
+	/*color: #FFF;*/
+	grid-column-start: 14;
+	grid-column-end: 15;
+	grid-row-start: 2;
+	grid-row-end: 3;
+}
+
+.bigBlind-dealer{
+	width: 60px;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	align-self: end;
+}
+
+.bigBlind-player{
+	width: 60px;
+	grid-column-start: 13;
+	grid-column-end: 14;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	align-self: right end;
+}
+
+.hide{
+	display: none;
+}
+
+.disabledButton{
+	pointer-events: none;
+}
+
+/*Animation!*/
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.turn {
+    animation: blink 1s;
+    animation-iteration-count: infinite;
+    width: 20px;
+}
+
+.status{
+	font-size: 24px;
+}
+
+.flip-vertical-right{
+	-webkit-animation: flip-vertical-right 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: flip-vertical-right 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+.flip-in-ver-left {
+	-webkit-animation: flip-in-ver-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: flip-in-ver-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.tracking-in-contract-bck {
+	-webkit-animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        color: #18EAEA;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2019-10-17 17:24:11
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info.
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation flip-in-ver-left
+ * ----------------------------------------
+ */
+@-webkit-keyframes flip-in-ver-left {
+  0% {
+    -webkit-transform: rotateY(80deg);
+            transform: rotateY(80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    opacity: 1;
+  }
+}
+@keyframes flip-in-ver-left {
+  0% {
+    -webkit-transform: rotateY(80deg);
+            transform: rotateY(80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
