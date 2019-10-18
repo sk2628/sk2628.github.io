@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Texas Hold'em (&copy;Steve Kang @ SEIF 2019)</title>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <script src='jquery.voicerss-tts.min.js'></script>
+    <script src="app.js"></script>
+</head>
+
+<!-- <body background="Background.jpg"> -->
+<body>
+<!--     <div class="input-group mb-3">
+        <div class="input-group-append">
+            <input type="text" id="minAmount" class="minAmount" placeholder="Min Amount" aria-label="Min Amount" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="confirmAmtButton">Confirm</button>
+        </div>
+    </div> -->
+    <audio id="textToSpeech" class="textToSpeech">
+        <source id="textToSpeechSource"
+                type="audio/mp3">
+
+    </audio>
+
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <input type="text" id="minAmount" class="minAmount" placeholder="Min Amount" aria-label="Min Amount" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="confirmAmtButton">Confirm</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class = "title">
+        <h1>Texas Hold'em</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div id="dealerLabel" class="dealarLabel">
+            <div id="dealerBalance" class="badge badge-pill badge-info"></div>
+            <div>
+                <span>Dealer
+                <img id="dealerTurn" class="turn hide" src="../resources/cleaned/green.png"/></span>
+            </div>
+        </div>
+        <img id="dealerBigBlind" src="../resources/cleaned/bigblind2.png" class="bigBlind-dealer hide"/>
+        <div id="dealer1"></div>
+        <div id="dealer2"></div>
+        <div id="dealerBet" class="dealerBet">
+            <div id="dealerBetLabel" class="badge badge-dark betLabel"></div>
+        </div>
+
+        <div id="community1"></div>
+        <div id="community2"></div>
+        <div id="community3"></div>
+        <div id="community4"></div>
+        <div id="community5"></div>
+
+        <div id="tableBet" class="tableBet tableLabel">
+            <div id="winningStatus" class="status">
+            </div>
+            <div id="status" class="status">
+            </div>
+            <br/><br/><div id="tableBetLabel" class="badge badge-dark betLabel"></div>
+        </div>
+
+        <div id="chipImageArea" class="chipImageArea">
+            <img class="chipImg blueChip hide" src="../resources/cleaned/blue-chip-25-transparent.png"/>
+            <img class="chipImg greenChip hide" src="../resources/cleaned/green-chip-50-transparent.png"/>
+            <img class="chipImg blackChip hide" src="../resources/cleaned/black-chip-100-transparent.png"/>
+            <img class="chipImg redChip hide" src="../resources/cleaned/red-chip-200-transparent.png"/>
+        </div>
+
+        <div id="blueChipArea" class="chipsBet blueChipArea"></div>
+        <div id="greenChipArea" class="chipsBet greenChipArea"></div>
+        <div id="blackChipArea" class="chipsBet blackChipArea"></div>
+        <div id="redChipArea" class="chipsBet redChipArea"></div>
+
+        <div id="playerLabel" class="playerLabel">
+            <div id="playerBalance" class="badge badge-pill badge-info"></div>
+            <div>
+                <span>Player
+                <img id="playerTurn" class="turn hide" src="../resources/cleaned/green.png"/></span>
+            </div>
+        </div>
+        <div id="player1" class="player1"></div>
+        <div id="player2" class="player2"></div>
+        <div id="playerBet" class="playerBet">
+            <div id="playerBetLabel" class="badge badge-dark betLabel"></div>
+        </div>
+
+        <div class="startButtonArea">
+            <button id="startBtn" type="button" class="btn btn-primary">New Game</button>
+            <button id="newRoundBtn" type="button" class="btn btn-primary">New Round</button>
+            <button id="betCallBtn" type="button" class="btn btn-primary">Bet/Call</button>
+            <button id="checkBtn" type="button" class="btn btn-primary">Check</button>
+            <button id="foldBtn" type="button" class="btn btn-primary">Fold</button>
+            <button id="allInBtn" type="button" class="btn btn-primary">All-In</button>
+        </div>
+    </div>
+</body>
+</html>
