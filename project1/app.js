@@ -1,3 +1,4 @@
+
 console.log("Connnected...");
 
 //...............................................................................................................
@@ -75,9 +76,7 @@ class Player {
     }
 
     updateBalance(amount){
-        console.log("Updating Balance..." + amount);
         this.currentBalance += parseInt(amount);
-        console.log("Updated Balance..." + this.currentBalance);
     }
 }
 
@@ -310,7 +309,6 @@ $(() => {
             }).done(
                 (data)=>{
                     populatePreFlopCards(data);
-                    console.log(data);
                 },
                 ()=>{
                     console.log('bad request');
@@ -338,7 +336,6 @@ $(() => {
 
     function drawAndRevealCard (round) {
         if (round === 2){ //Flop Stage
-            console.log("start");
             setTimeout(drawAndRevealCardSingle, 200, "c1");
             setTimeout(drawAndRevealCardSingle, 1200, "c2");
             setTimeout(drawAndRevealCardSingle, 2200, "c3");
@@ -356,9 +353,6 @@ $(() => {
     }
 
     function drawAndRevealCardSingle (card) {
-        console.log(myGame.dealerCards[0].image);
-        console.log(myGame.dealerCards[1].image);
-
         switch(card){
             case "c1":
                 $('#community1').removeClass('community-card-face-down').css('background-image','url(' + myGame.communityCards[0].image + ')').addClass('communityCards').addClass('community1').addClass('flip-in-ver-left');
@@ -413,7 +407,6 @@ $(() => {
     }
 
     const defaultButton = () => {
-        console.log("defaultButton clicked");
         disabledButton($('#betCallBtn'));
         disabledButton($('#checkBtn'));
         disabledButton($('#foldBtn'));
@@ -443,6 +436,7 @@ $(() => {
     }
 
     const check = (round) => {
+        Helper.readOutLoud("Player checked", mySettings.textToSpeech);
         setAndRotateTurn(myDealer, myPlayer);
 
         currentRound++;
@@ -687,8 +681,6 @@ $(() => {
         let myCard;
         let cardSequence = 0;
 
-        console.log(response);
-
         //assign cards to variable
         while(cardSequence < 9){
             for (let i = 0; i < response.cards.length; i++){
@@ -782,11 +774,8 @@ $(() => {
 
         //Round 1 - Preflop
         if(round === 0){
-            //$('#dealerBetLabel').text(Helper.formatAmount(myDealer.preFlopHoldingAmount));
             populateDealerBalance();
             populateTableBalance();
-            //populateTableBalance(myDealer, '#dealerBalance'); //Refresh table amount
-            // populateTableBet(myDealer.preFlopHoldingAmount); //Refresh table amount
         }
         else {
             Helper.printMsg("Dealer adding... " + tempAmount);
@@ -850,13 +839,11 @@ $(() => {
     }
 
     const calculateWinner = () => {
-        console.log(myGame);
-        //TO-DO: REMOVEW SUBSSTITEU VALUE
         let localDealerCards = myGame.dealerCards.slice(0);
         let localPlayerCards = myGame.playerCards.slice(0);
         let localCommunityCards = myGame.communityCards.slice(0);
+
         let winnerMessage = "";
-        const checkWinningCombination = 10;
 
         //Combinining 5 community cards + 2 player/dealer cards to form a new array
         for (let i = 0; i < localCommunityCards.length; i++){
@@ -864,15 +851,18 @@ $(() => {
             localPlayerCards.push(localCommunityCards[i]);
         }
 
+        let localDealerSortedHighestCard = myGame.sortByLargestValue(localDealerCards);
+        let localPlayerSortedHighestCard = myGame.sortByLargestValue(localPlayerCards);
+
         //Step through the checks 10/10
         if (myGame.winnerFound == false){
-            winnerMessage = checkThree(localDealerCards, localPlayerCards);
+            winnerMessage = checkThree(localDealerSortedHighestCard, localPlayerSortedHighestCard);
         }
         if (myGame.winnerFound == false){
-            winnerMessage = checkPair(localDealerCards, localPlayerCards);
+            winnerMessage = checkPair(localDealerSortedHighestCard, localPlayerSortedHighestCard);
         }
         if (myGame.winnerFound == false){
-            winnerMessage = checkHighCard(localDealerCards, localPlayerCards);
+            winnerMessage = checkHighCard(localDealerSortedHighestCard, localPlayerSortedHighestCard);
         }
 
         //A winner is found
@@ -892,17 +882,56 @@ $(() => {
         }
     }
 
+    //Future Feature
+    // const checkStraight = (dealerCards, playerCards) => {
+
+    //     let dealerStraightCheck = [];
+    //     let playerStraightCheck = [];
+    //     let localDealerSortedHighestCard = dealerCards;
+    //     let localPlayerSortedHighestCard = playerCards;
+
+    //     console.log(localDealerSortedHighestCard);
+    //     console.log(localPlayerSortedHighestCard);
+
+    //     //Populate 1st card into the array
+    //     dealerStraightCheck.push(localDealerSortedHighestCard[0]);
+    //     playerStraightCheck.push(localPlayerSortedHighestCard[0]);
+
+    //     console.log(dealerStraightCheck);
+    //     console.log(playerStraightCheck);
+
+    //     //Check through the remaining 6 cards
+    //     for (let card = 1; card < localDealerSortedHighestCard.length; card++){
+    //         //If the 2nd element is 1 value smaller than the 1st element, then append it to the straight check array
+    //         if ((localDealerSortedHighestCard[card].valueNumeric + 1) === localDealerSortedHighestCard[card - 1].valueNumeric){
+    //             dealerStraightCheck.push(localDealerSortedHighestCard[card].valueNumeric);
+    //         }
+    //     }
+
+    //     for (let card = 1; card < localPlayerSortedHighestCard.length; card++){
+    //         //If the 2nd element is 1 value smaller than the 1st element, then append it to the straight check array
+    //         if ((localPlayerSortedHighestCard[card].valueNumeric + 1) === localPlayerSortedHighestCard[card - 1].valueNumeric){
+    //             playerStraightCheck.push(localPlayerSortedHighestCard[card].valueNumeric);
+    //         }
+    //     }
+
+    //     //If the dealere array has 5 elements
+    //     if (dealerStraightCheck.length > playerStraightCheck.length && dealerStraightCheck.length >= 5){
+    //         myGame.winnerFound = true;
+    //         myDealer.updateBalance(tableAmount);
+    //         return "Dealer Won with a straight!";
+    //     }
+    //     else if (playerStraightCheck.length > dealerStraightCheck.length && playerStraightCheck.length >= 5){
+    //         myGame.winnerFound = true;
+    //         myDealer.updateBalance(tableAmount);
+    //         return "Player Won with a straight!";
+    //     }
+    // }
+
     //Check winning combination for high card
     const checkHighCard = (dealerCards, playerCards) => {
         let dealerHighestCard = dealerCards;
         let playerHighestCard = playerCards;
-
-        dealerHighestCard.sort(function (a, b) {
-            return b.valueNumeric - a.valueNumeric;
-        });
-        playerHighestCard.sort(function (a, b) {
-            return b.valueNumeric - a.valueNumeric;
-        });
 
         if (dealerHighestCard[0].valueNumeric > playerHighestCard[0].valueNumeric){
             myGame.winnerFound = true;
@@ -927,8 +956,8 @@ $(() => {
     //Check winning combination for 3 card with the same value
     const checkThree = (dealerCards, playerCards) => {
         //Force empty the array to support for multiple round
-        let localDealerHighestCard = myGame.sortByLargestValue(dealerCards);
-        let localPlayerHighestCard = myGame.sortByLargestValue(playerCards);
+        let localDealerHighestCard = dealerCards;
+        let localPlayerHighestCard = playerCards;
         let localDealerPair = [];
         let localPlayerPair = [];
 
@@ -996,8 +1025,8 @@ $(() => {
     //Check winning combination for single pair and double pair
     const checkPair = (dealerCards, playerCards) => {
         //Force empty the array to support for multiple round
-        let localDealerHighestCard = myGame.sortByLargestValue(dealerCards);
-        let localPlayerHighestCard = myGame.sortByLargestValue(playerCards);
+        let localDealerHighestCard = dealerCards;
+        let localPlayerHighestCard = playerCards;
         let localDealerPair = [];
         let localPlayerPair = [];
 
@@ -1150,6 +1179,12 @@ $(() => {
             Helper.playChipSound();
         }
     })
+
+    //Future Feature
+    // $('#checkStraightBtn').on('click', (ev) => {
+    //     ev.preventDefault();
+    //     checkStraight();
+    // })
 
     //Chip Mouse Over handling
     $('#blueChipArea').on('mouseover',(ev) => {
